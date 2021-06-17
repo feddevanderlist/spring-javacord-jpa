@@ -1,0 +1,8 @@
+ ____  _  _    __    __  __  ____  __    ____  ____  _____  ____
+( ___)( \/ )  /__\  (  \/  )(  _ \(  )  ( ___)(  - \(  _  )(_  _)
+ )__)  )  (  /(  )\  )    (  )___/ )(__  )__)  ) _ < )(_)(   )(
+(____)(_/\_)(__)(__)(_/\/\_)(__)  (____)(____)(____/(_____) (__)
+
+Artifact Name : ${application.title}
+Artifact Version: ${application.formatted-version}
+Spring Boot Version: ${spring-boot.formatted-version}
