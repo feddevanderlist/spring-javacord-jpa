@@ -23,7 +23,7 @@ public class DiscordApiConfiguration {
     @Bean
     public DiscordApi discordApi() {
         String token = env.getProperty("TOKEN");
-        Logger.getLogger("SchedulerApplication").log(Level.INFO, token);
+        Logger.getLogger("springboot-javacord-example").log(Level.INFO, token);
         DiscordApiBuilder builder = new DiscordApiBuilder().setToken(token);
         DiscordApi api = builder.setAllNonPrivilegedIntents().login().join();
         api.addListener(exampleListener);
