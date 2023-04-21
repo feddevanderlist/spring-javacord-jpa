@@ -22,12 +22,27 @@ public class DiscordApiConfiguration {
     @Autowired
     private ExampleListener exampleListener;
 
+    private final Logger LOGGER = Logger.getLogger(this.getClass().toString());
+
     @Bean
     public DiscordApi discordApi() {
         String token = env.getProperty("TOKEN");
         DiscordApiBuilder builder = new DiscordApiBuilder().setToken(token);
         DiscordApi api = builder.setAllNonPrivilegedIntents().login().join();
         api.addListener(exampleListener);
+        sendMessageToOwnerOnStartUp(api);
         return api;
+    }
+
+    private void sendMessageToOwnerOnStartUp(final DiscordApi api) {
+        api.getOwner().ifPresent(o ->
+                o.thenApply(user -> user.sendMessage("The example bot has been successfully restarted"))
+                        .thenAccept(m -> LOGGER.log(Level.INFO, "The example has been successfully restarted"))
+                        .exceptionally(e -> {
+                                    LOGGER.log(Level.SEVERE, "Something went wrong sending a message to the owner: {0}", e.toString());
+                                    return null;
+                                }
+                        )
+        );
     }
 }
