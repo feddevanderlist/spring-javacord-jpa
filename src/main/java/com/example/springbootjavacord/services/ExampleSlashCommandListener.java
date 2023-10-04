@@ -8,9 +8,11 @@ import org.javacord.api.interaction.SlashCommandInteraction;
 import org.javacord.api.interaction.callback.InteractionOriginalResponseUpdater;
 import org.javacord.api.listener.interaction.SlashCommandCreateListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CompletableFuture;
 
+@Service
 public class ExampleSlashCommandListener
         implements SlashCommandCreateListener {
 
